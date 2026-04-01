@@ -26,6 +26,8 @@ export default defineConfig(({ mode }) => {
         plugins: [react(), mkcert(), splitVendorChunkPlugin()],
         define: {
             __BUILD_VERSION__: JSON.stringify(`${mode.startsWith("production") ? "" : "dev_"}${version}`),
+            __SUPABASE_URL__: JSON.stringify(process.env.SUPABASE_URL ?? ""),
+            __SUPABASE_ANON_KEY__: JSON.stringify(process.env.SUPABASE_ANON_KEY ?? ""),
         },
     };
 

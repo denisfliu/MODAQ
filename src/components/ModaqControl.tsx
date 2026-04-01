@@ -248,6 +248,7 @@ function initializeControl(appState: AppState, props: IModaqControlProps): () =>
 
     return () => {
         document.removeEventListener("keyup", keydownListener);
+        clearInterval(appState.uiState.customExportIntervalId);
     };
 }
 
@@ -372,13 +373,8 @@ function update(appState: AppState, props: IModaqControlProps): void {
             appState.uiState.resetCustomExport();
             appState.setCustomExportInterval(undefined);
         } else {
-            const updateInterval: boolean =
-                props.customExport.customExportInterval !== appState.uiState.customExportOptions?.customExportInterval;
-
             appState.uiState.setCustomExport(props.customExport);
-            if (updateInterval) {
-                appState.setCustomExportInterval(props.customExport.customExportInterval);
-            }
+            appState.setCustomExportInterval(props.customExport.customExportInterval);
         }
     }
 

@@ -120,7 +120,7 @@ export class AppState {
             interval = minimumIntervalInMs;
         }
 
-        const newIntervalId = setInterval(() => {
+        const newIntervalId = window.setInterval(() => {
             // Only export if the game has changes. We do this check here instead of handleCustomExport because the
             // user should be able to explicitly export multiple times (to create new files, for example), but that doesn't
             // make sense to do for something running from the timer.
